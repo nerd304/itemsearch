@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% block title %}Item List{% endblock %}
+
+{% block content %}
+<div class="container mx-auto px-4">
+    <h1 class="text-2xl font-bold mb-4">Item Catalog</h1>
+
+    {# Search Bar #}
+    <div class="flex mb-4">
+        <input type="text" id="search-input" name="search_query" placeholder="Search by name, item number, brand..." class="flex-grow px-4 py-2 border rounded-xl focus:outline-none focus:ring-2 focus:ring-ring">
+    </div>
+
+    {# Item Grid - will be updated by JavaScript #}
+    <div id="item-grid-container">
+        {% include '_item_grid.html' %}
+    </div>
+</div>
+
+<script>
+    let debounceTimeout;
+
+    const searchInput = document.getElementById('search-input');
+    const itemGridContainer = document.getElementById('item-grid-container');
+
+    function performSearch() {
+        const query = searchInput.value;
+
+        // Use fetch to send a request to the /search endpoint (always searching all fields)
+        fetch(`/search?search_query=${encodeURIComponent(query)}&search_field=All%20Fields`)
+            .then(response => response.text())
+            .then(html => {
+                // Replace the content of the item grid container with the new HTML
+                itemGridContainer.innerHTML = html;
+            })
+            .catch(error => {
+                console.error('Error fetching search results:', error);
+            });
+    }
+
+    searchInput.addEventListener('input', () => {
+        // Clear the previous timeout
+        clearTimeout(debounceTimeout);
+        // Set a new timeout to run the search after 300ms
+        debounceTimeout = setTimeout(performSearch, 300);
+    });
+</script>
+{% endblock %}

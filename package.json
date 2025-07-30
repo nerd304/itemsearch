@@ -1,0 +1,12 @@
+{
+  "name": "flask-tailwind-project",
+  "version": "1.0.0",
+  "description": "A Flask project with Tailwind CSS",
+  "scripts": {
+    "build:css": "tailwindcss -i ./static/css/styles.css -o ./static/css/tailwind.css",
+    "watch:css": "tailwindcss -i ./static/css/styles.css -o ./static/css/tailwind.css --watch"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.0.0"
+  }
+}
