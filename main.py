@@ -20,6 +20,7 @@ class Item(db.Model):
     itemNumber = db.Column(db.String(50), unique=True, nullable=True)
     brand = db.Column(db.String(50), nullable=True)
     description = db.Column(db.Text, nullable=True)
+    imageUrl = db.Column(db.String(255), nullable=True)
 
     def __repr__(self):
         return f"Item('{self.name}', '{self.itemNumber}', '{self.brand}')"
@@ -80,7 +81,8 @@ def add_item():
         name=request.form['name'],
         itemNumber=request.form.get('itemNumber'),
         brand=request.form.get('brand'),
-        description=request.form.get('description')
+        description=request.form.get('description'),
+        imageUrl=request.form.get('imageUrl')
     )
     try:
         db.session.add(new_item)
@@ -99,6 +101,7 @@ def edit_item(id):
         item.itemNumber = request.form.get('itemNumber')
         item.brand = request.form.get('brand')
         item.description = request.form.get('description')
+        item.imageUrl = request.form.get('imageUrl')
         try:
             db.session.commit()
             flash('Item updated successfully!', 'success')
@@ -145,7 +148,8 @@ def import_json():
                     name=item_data.get('name'),
                     itemNumber=item_data.get('itemNumber'),
                     brand=item_data.get('brand'),
-                    description=item_data.get('description')
+                    description=item_data.get('description'),
+                    imageUrl=item_data.get('imageUrl')
                 )
                 db.session.add(new_item)
             db.session.commit()

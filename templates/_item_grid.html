@@ -1,11 +1,9 @@
-<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+view<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
     {% for item in items %}
         <a href="{{ url_for('item_detail', id=item.id) }}" class="block">
             <div class="bg-card rounded-xl border shadow-sm hover:shadow-md transition-shadow">
-                {# Placeholder Image #}
-                <div class="w-full aspect-video bg-muted rounded-t-xl flex items-center justify-center text-muted-foreground">
-                    No Image
-                </div>
+                {# Image #}
+                <img src="{{ item.imageUrl if item.imageUrl else url_for('static', filename='images/hotdog.png') }}" alt="{{ item.name }}" class="w-full h-48 object-cover rounded-t-xl">
 
                 <div class="p-4">
                     <h2 class="text-lg font-semibold">{{ item.name }}</h2>

@@ -7,9 +7,9 @@
     <h1 class="text-2xl font-bold mb-4">{{ item.name }}</h1>
 
     <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-        {# Placeholder Image Column #}
+        {# Image Column #}
         <div class="w-full aspect-video bg-muted rounded-xl flex items-center justify-center text-muted-foreground">
-            No Image
+            <img src="{{ item.imageUrl if item.imageUrl else url_for('static', filename='images/hotdog.png') }}" alt="{{ item.name }}" class="w-full h-full object-cover rounded-xl">
         </div>
 
         {# Item Details Column #}
