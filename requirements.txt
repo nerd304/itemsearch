@@ -5,4 +5,5 @@ autopep8
 # App
 flask
 Flask-SQLAlchemy
+gunicorn
 tailwindcss
