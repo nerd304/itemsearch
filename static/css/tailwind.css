@@ -675,6 +675,10 @@ body {
   display: grid;
 }
 
+.hidden {
+  display: none;
+}
+
 .aspect-video {
   aspect-ratio: 16 / 9;
 }
@@ -691,6 +695,10 @@ body {
   height: 12rem;
 }
 
+.h-5 {
+  height: 1.25rem;
+}
+
 .h-8 {
   height: 2rem;
 }
@@ -701,6 +709,10 @@ body {
 
 .w-16 {
   width: 4rem;
+}
+
+.w-5 {
+  width: 1.25rem;
 }
 
 .w-8 {
@@ -839,6 +851,11 @@ body {
 
 .p-6 {
   padding: 1.5rem;
+}
+
+.px-2 {
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
 }
 
 .px-4 {
@@ -984,6 +1001,26 @@ body {
   --ring: 350 80% 50%;
 }
 
+.dark {
+  --background: 0 0% 10%;
+  --foreground: 0 0% 90%;
+  --card: 0 0% 15%;
+  --card-foreground: 0 0% 90%;
+  --primary: 350 80% 60%;
+  --primary-foreground: 0 0% 10%;
+  --secondary: 208 100% 44%;
+  --secondary-foreground: 0 0% 10%;
+  --muted: 0 0% 20%;
+  --muted-foreground: 0 0% 60%;
+  --accent: 208 100% 44%;
+  --accent-foreground: 0 0% 10%;
+  --destructive: 350 80% 60%;
+  --destructive-foreground: 0 0% 10%;
+  --border: 0 0% 30%;
+  --input: 0 0% 30%;
+  --ring: 350 80% 60%;
+}
+
 .hover\:bg-destructive\/90:hover {
   background-color: hsl(var(--destructive) / 0.9);
 }
@@ -1025,6 +1062,26 @@ body {
   .supports-\[backdrop-filter\]\:bg-card\/60 {
     background-color: hsl(var(--card) / 0.6);
   }
+}
+
+.dark\:bg-green-900:is(.dark *) {
+  --tw-bg-opacity: 1;
+  background-color: rgb(20 83 45 / var(--tw-bg-opacity, 1));
+}
+
+.dark\:bg-red-900:is(.dark *) {
+  --tw-bg-opacity: 1;
+  background-color: rgb(127 29 29 / var(--tw-bg-opacity, 1));
+}
+
+.dark\:text-green-200:is(.dark *) {
+  --tw-text-opacity: 1;
+  color: rgb(187 247 208 / var(--tw-text-opacity, 1));
+}
+
+.dark\:text-red-200:is(.dark *) {
+  --tw-text-opacity: 1;
+  color: rgb(254 202 202 / var(--tw-text-opacity, 1));
 }
 
 @media (min-width: 640px) {
