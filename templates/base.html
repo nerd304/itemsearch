@@ -10,10 +10,13 @@
 <body class="font-sans antialiased">
     <header class="sticky top-0 z-50 w-full border-b bg-card/95 backdrop-blur supports-[backdrop-filter]:bg-card/60">
         <div class="container flex h-14 items-center justify-between">
-            <a href="{{ url_for('index') }}" class="mr-6 flex items-center space-x-2">
-                <span class="font-bold">ItemVerse</span>
-            </a>
-            <a href="{{ url_for('manage_items') }}" class="bg-primary text-primary-foreground px-4 py-2 rounded-xl hover:bg-primary/90 transition-colors">
+            <div class="flex items-center"> {# Container for image and text #}
+                <a href="{{ url_for('index') }}" class="mr-6 flex items-center space-x-2"> {# Link for ItemVerse text #}
+                    <span class="font-bold">ItemVerse</span>
+                </a>
+                <img src="{{ url_for('static', filename='images/hotdog.png') }}" alt="Hotdog" class="h-8 w-8 mr-2" id="hotdog-image"> {# Hotdog image moved to the right #}
+            </div>
+            <a href="{{ url_for('manage_items') }}" class="bg-primary text-primary-foreground px-4 py-2 rounded-xl hover:bg-primary/90 transition-colors" id="manage-items-button">
                 Manage Items
             </a>
         </div>
@@ -35,5 +38,22 @@
 
         {% block content %}{% endblock %}
     </div>
+
+    <script>
+        const hotdogImage = document.getElementById('hotdog-image');
+        const manageItemsButton = document.getElementById('manage-items-button');
+        let clickCount = 0;
+        const requiredClicks = 5;
+
+        // Initially hide the button
+        manageItemsButton.style.display = 'none';
+
+        hotdogImage.addEventListener('click', () => {
+            clickCount++;
+            if (clickCount >= requiredClicks) {
+                manageItemsButton.style.display = 'block'; // Or 'inline-block' depending on layout
+            }
+        });
+    </script>
 </body>
 </html>
